@@ -26,6 +26,12 @@
   border: 1px solid rgba(255, 255, 255, .1);
   text-align: center;
   overflow: hidden;
+  cursor: not-allowed;
+}
+.main ul > li:hover {
+  border-color: rgba(255, 255, 255, 1);
+  color: rgba(255, 255, 255, 1);
+  background-color: dodgerblue;
 }
 
 .footer {
