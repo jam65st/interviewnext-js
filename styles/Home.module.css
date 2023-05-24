@@ -12,6 +12,16 @@
   align-items: center;
 }
 
+.main ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.main ul > li {
+  width: 10%;
+  display: block;
+}
+
 .footer {
   display: flex;
   flex: 1;
