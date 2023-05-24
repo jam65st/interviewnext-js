@@ -4,18 +4,30 @@ import {useState, useEffect} from 'react'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
-    const [numbersList, setNumbersList] = useState([])
+    const [numbersList, setNumbersList] = useState([]),
+        [isLoading, setIsLoading] = useState(false)
+    let result;
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/hello')
+        let n;
+        setIsLoading(true)
+        fetch('api/hello')
             .then(res => res.json())
             .then(data => {
-                setNumbersList( data.name );
+                setNumbersList(data.name)
+                n = setTimeout(setIsLoading, 500, false);
             })
 
     }, [])
 
-    if (!numbersList) return <p>Empty, no data</p>
+    if (isLoading) {
+        result = <li>Loading...</li>
+    } else if (!numbersList) {
+        result = <li>Empty, no data</li>
+    } else {
+        // eslint-disable-next-line react/jsx-key
+        result = numbersList.map(number => <li>{number}</li>)
+    }
 
     return (
         <div className={styles.container}>
@@ -26,20 +38,17 @@ export default function Home() {
             </Head>
 
             <main className={styles.main}>
-                <ul>
-                    {numbersList.map(number => {
-                        // eslint-disable-next-line react/jsx-key
-                        return <li>{number}</li>
-                    })}
-                </ul>
+                <ul>{result}</ul>
             </main>
 
             <footer className={styles.footer}>
-                <button>
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16}/>
-          </span>
-                </button>
+                <a href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    <span className={styles.logo}>
+                        <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16}/>
+                    </span>
+                </a>
             </footer>
         </div>
     )
