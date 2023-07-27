@@ -1,4 +1,4 @@
-# Interview Next.js <br/><small style="color: #F15A24;">FizzBuzz</small>
+# Interview Next.js: FizzBuzz
 
 <small>This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).</small>
 
